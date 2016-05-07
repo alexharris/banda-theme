@@ -20,7 +20,45 @@
                 <?php _e('Filed under&#58;'); ?> <?php the_category(', ') ?> <?php _e('by'); ?> <?php  the_author(); ?><br />
                 <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;', '% Comments &#187;'); ?> <?php edit_post_link('Edit', ' &#124; ', ''); ?>
                 </p>
-  
+                <h3>Test Banda UI</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Table Heading 1</th>
+                            <th>Table Heading 2</th>
+                            <th>Table Heading 3</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Table Footer 1</th>
+                            <th>Table Footer 2</th>
+                            <th>Table Footer 3</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr>
+                            <td>Table Cell 1</td>
+                            <td>Table Cell 2</td>
+                            <td>Table Cell 3</td>
+                        </tr>
+                        <tr>
+                            <td>Table Cell 1</td>
+                            <td>Table Cell 2</td>
+                            <td>Table Cell 3</td>
+                        </tr>
+                        <tr>
+                            <td>Table Cell 1</td>
+                            <td>Table Cell 2</td>
+                            <td>Table Cell 3</td>
+                        </tr>
+                        <tr>
+                            <td>Table Cell 1</td>
+                            <td>Table Cell 2</td>
+                            <td>Table Cell 3</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     <?php endwhile; ?>
