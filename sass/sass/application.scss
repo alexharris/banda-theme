@@ -1,7 +1,5 @@
-@import 'config';
-@import 'helpers';
-@import 'utilities';
-@import 'reset';
-@import 'base';
+@import 'normalize';
+@import 'bandaui/toolkit';
+@import 'general';
 @import 'main';
-@import 'mediaquery';
+@import 'media_queries';

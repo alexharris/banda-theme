@@ -1,10 +1,9 @@
 <?php
 // Enqueue Theme Styles and Scripts
 function my_assets() {
-  wp_enqueue_style( 'bootstrap-css', '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css' );
   wp_enqueue_style( 'theme-style', get_stylesheet_uri() );
   wp_enqueue_script( 'bootstrap-js', '//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js', array( 'jquery' ), null, true );
-  wp_enqueue_script( 'template-js', get_stylesheet_directory_uri() . '/js_test/main.min.js', array( 'jquery','test' ), null, true );
+  wp_enqueue_script( 'template-js', get_stylesheet_directory_uri() . '/js/main.min.js', array( 'jquery' ), null, true );
 }
 add_action( 'wp_enqueue_scripts', 'my_assets' ); 
 
