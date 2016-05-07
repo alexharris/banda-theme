@@ -1,0 +1,41 @@
+// ==========================================================================
+// Utilities
+// Variables, Mixins, Placeholders
+// ==========================================================================
+
+
+// ==========================================================================
+// Base Styles
+// body, header, h1-6, p, a, ol, ul, etc.
+// ==========================================================================
+
+
+// ==========================================================================
+// Global Config
+// ==========================================================================
+
+// Fonts
+// $body-font      : sans-serif;
+// $header-font    : sans-serif; 
+// $bold           : normal normal bold;
+// $regular        : normal normal normal;
+// $bold-italic    : italic normal bold;
+
+// Base Colors
+// $black          : #0b0b0b;
+// $grey-dark      : #333;
+// $grey-medium    : #5c5c5c;
+// $grey           : #797e83;
+// $grey-light     : #e5e5e5;
+// $white          : #fff;
+
+// Color Usage
+// $color-primary  : $grey-dark;
+// $color-secondary: $grey;
+// $color-accent   : $grey-light;
+// $color-shadow   : rgba($black, .2);
+
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
