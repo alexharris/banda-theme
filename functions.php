@@ -116,6 +116,143 @@ function wpb_imagelink_setup() {
 }
 add_action('admin_init', 'wpb_imagelink_setup', 10);
 
+
+//
+// Add Custom Post Types
+//
+// Register Custom Post Type
+function entries_post_type() {
+
+  $labels = array(
+    'name'                  => _x( 'Entries', 'Post Type General Name', 'banda-theme' ),
+    'singular_name'         => _x( 'Entry', 'Post Type Singular Name', 'banda-theme' ),
+    'menu_name'             => __( 'Entries', 'banda-theme' ),
+    'name_admin_bar'        => __( 'Entries', 'banda-theme' ),
+    'archives'              => __( 'Entry Archives', 'banda-theme' ),
+    'parent_item_colon'     => __( 'Parent Entry:', 'banda-theme' ),
+    'all_items'             => __( 'All Entries', 'banda-theme' ),
+    'add_new_item'          => __( 'Add New Entry', 'banda-theme' ),
+    'add_new'               => __( 'Add Entry', 'banda-theme' ),
+    'new_item'              => __( 'New Entry', 'banda-theme' ),
+    'edit_item'             => __( 'Edit Entry', 'banda-theme' ),
+    'update_item'           => __( 'Update Entry', 'banda-theme' ),
+    'view_item'             => __( 'View Entry', 'banda-theme' ),
+    'search_items'          => __( 'Search Entry', 'banda-theme' ),
+    'not_found'             => __( 'Not found', 'banda-theme' ),
+    'not_found_in_trash'    => __( 'Not found in Trash', 'banda-theme' ),
+    'featured_image'        => __( 'Featured Image', 'banda-theme' ),
+    'set_featured_image'    => __( 'Set featured image', 'banda-theme' ),
+    'remove_featured_image' => __( 'Remove featured image', 'banda-theme' ),
+    'use_featured_image'    => __( 'Use as featured image', 'banda-theme' ),
+    'insert_into_item'      => __( 'Insert into entry', 'banda-theme' ),
+    'uploaded_to_this_item' => __( 'Uploaded to this entry', 'banda-theme' ),
+    'items_list'            => __( 'Entries list', 'banda-theme' ),
+    'items_list_navigation' => __( 'Entries list navigation', 'banda-theme' ),
+    'filter_items_list'     => __( 'Filter entries list', 'banda-theme' ),
+  );
+  $args = array(
+    'label'                 => __( 'Entry', 'banda-theme' ),
+    'description'           => __( 'Individual entry posts', 'banda-theme' ),
+    'labels'                => $labels,
+    'supports'              => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'trackbacks', 'revisions', 'custom-fields', 'page-attributes', 'post-formats', ),
+    'taxonomies'            => array( 'category', 'post_tag' ),
+    'hierarchical'          => false,
+    'public'                => true,
+    'show_ui'               => true,
+    'show_in_menu'          => true,
+    'menu_position'         => 5,
+    'menu_icon'             => 'dashicons-portfolio',
+    'show_in_admin_bar'     => true,
+    'show_in_nav_menus'     => true,
+    'can_export'            => true,
+    'has_archive'           => true,    
+    'exclude_from_search'   => false,
+    'publicly_queryable'    => true,
+    'capability_type'       => 'page',
+  );
+  register_post_type( 'entries', $args );
+
+}
+add_action( 'init', 'entries_post_type', 0 );
+
+
+//
+// Remove posts and comments from admin area
+//
+function remove_menus(){
+  remove_menu_page( 'edit.php' );                   //Posts
+  remove_menu_page( 'edit-comments.php' );          //Comments  
+}
+add_action( 'admin_menu', 'remove_menus' );
+
+//
+// Test meta box
+//
+function test_meta_box_title_get_meta( $value ) {
+  global $post;
+
+  $field = get_post_meta( $post->ID, $value, true );
+  if ( ! empty( $field ) ) {
+    return is_array( $field ) ? stripslashes_deep( $field ) : stripslashes( wp_kses_decode_entities( $field ) );
+  } else {
+    return false;
+  }
+}
+
+function test_meta_box_title_add_meta_box() {
+  add_meta_box(
+    'test_meta_box_title-test-meta-box-title',
+    __( 'Test meta box title', 'test_meta_box_title' ),
+    'test_meta_box_title_html',
+    'entries',
+    'normal',
+    'default'
+  );
+}
+add_action( 'add_meta_boxes', 'test_meta_box_title_add_meta_box' );
+
+function test_meta_box_title_html( $post) {
+  wp_nonce_field( '_test_meta_box_title_nonce', 'test_meta_box_title_nonce' ); ?>
+
+  <p>Test meta box description</p>
+
+  <p>
+    <label for="test_meta_box_title_text_area_one"><?php _e( 'Text area one', 'test_meta_box_title' ); ?></label><br>
+    <input type="text" name="test_meta_box_title_text_area_one" id="test_meta_box_title_text_area_one" value="<?php echo test_meta_box_title_get_meta( 'test_meta_box_title_text_area_one' ); ?>">
+  </p>  <p>
+    <label for="test_meta_box_title_text_area_2"><?php _e( 'Text area 2', 'test_meta_box_title' ); ?></label><br>
+    <textarea name="test_meta_box_title_text_area_2" id="test_meta_box_title_text_area_2" ><?php echo test_meta_box_title_get_meta( 'test_meta_box_title_text_area_2' ); ?></textarea>
+  
+  </p>  <p>
+    <label for="test_meta_box_title_select_opt"><?php _e( 'Select opt', 'test_meta_box_title' ); ?></label><br>
+    <select name="test_meta_box_title_select_opt" id="test_meta_box_title_select_opt">
+      <option <?php echo (test_meta_box_title_get_meta( 'test_meta_box_title_select_opt' ) === 'one ' ) ? 'selected' : '' ?>>one </option>
+      <option <?php echo (test_meta_box_title_get_meta( 'test_meta_box_title_select_opt' ) === 'two' ) ? 'selected' : '' ?>>two</option>
+      <option <?php echo (test_meta_box_title_get_meta( 'test_meta_box_title_select_opt' ) === 'three' ) ? 'selected' : '' ?>>three</option>
+    </select>
+  </p><?php
+}
+
+function test_meta_box_title_save( $post_id ) {
+  if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+  if ( ! isset( $_POST['test_meta_box_title_nonce'] ) || ! wp_verify_nonce( $_POST['test_meta_box_title_nonce'], '_test_meta_box_title_nonce' ) ) return;
+  if ( ! current_user_can( 'edit_post', $post_id ) ) return;
+
+  if ( isset( $_POST['test_meta_box_title_text_area_one'] ) )
+    update_post_meta( $post_id, 'test_meta_box_title_text_area_one', esc_attr( $_POST['test_meta_box_title_text_area_one'] ) );
+  if ( isset( $_POST['test_meta_box_title_text_area_2'] ) )
+    update_post_meta( $post_id, 'test_meta_box_title_text_area_2', esc_attr( $_POST['test_meta_box_title_text_area_2'] ) );
+  if ( isset( $_POST['test_meta_box_title_select_opt'] ) )
+    update_post_meta( $post_id, 'test_meta_box_title_select_opt', esc_attr( $_POST['test_meta_box_title_select_opt'] ) );
+}
+add_action( 'save_post', 'test_meta_box_title_save' );
+
+/*
+  Usage: test_meta_box_title_get_meta( 'test_meta_box_title_text_area_one' )
+  Usage: test_meta_box_title_get_meta( 'test_meta_box_title_text_area_2' )
+  Usage: test_meta_box_title_get_meta( 'test_meta_box_title_select_opt' )
+*/
+
 // Add logo to login page
 // Add support for WordPress 3.0's custom menus
 // Custom Post Types
