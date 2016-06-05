@@ -3,6 +3,9 @@
 // header -- main menu -- home -- interior pages -- sidebar -- footer
 // ==========================================================================
 
+html {
+  background-color: $grey;
+}
 
 // =============================
 // header
@@ -34,3 +37,6 @@
 // =============================
 
 
+footer {
+  background-color: $grey;
+}

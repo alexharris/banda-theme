@@ -1,9 +1,9 @@
 <?php get_header(); ?>
-
+<?php get_sidebar(); ?>
 <div class="container container-normal">
 
       <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-9">
  
         <?php if(have_posts()) : ?><?php while(have_posts()) : the_post(); ?>
          
@@ -30,5 +30,4 @@
         <?php endif; ?>
     </div>
     </div>
-<?php get_sidebar(); ?>   
 <?php get_footer(); ?>
