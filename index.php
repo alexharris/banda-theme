@@ -1,11 +1,9 @@
 <?php get_header(); ?>
-<div class="navbar-lower-border"></div>
-
+<?php get_sidebar(); ?>
 <div class="container container-normal">
 
-      <!-- Three columns of text below the carousel -->
       <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-9">
  
         <?php if(have_posts()) : ?><?php while(have_posts()) : the_post(); ?>
          
@@ -20,10 +18,10 @@
                 <?php _e('Filed under&#58;'); ?> <?php the_category(', ') ?> <?php _e('by'); ?> <?php  the_author(); ?><br />
                 <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;', '% Comments &#187;'); ?> <?php edit_post_link('Edit', ' &#124; ', ''); ?>
                 </p>
-  
+ 
             </div>
         </div>
-    <?php endwhile; ?>
+        <?php endwhile; ?>
          
         <div class="navigation">
         <?php posts_nav_link(); ?>
@@ -32,5 +30,4 @@
         <?php endif; ?>
     </div>
     </div>
-<?php get_sidebar(); ?>   
 <?php get_footer(); ?>
