@@ -39,7 +39,9 @@
                     <a class="navbar-brand" href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><?php bloginfo( 'name' ); ?></a>
                 <?php endif; ?>
             </div>
-            <?php wp_nav_menu( array( 'menu' => 'Main Menu', 'theme_location' => 'primary', 'container_class' => 'collapse navbar-collapse', 'container_id' => 'bs-example-navbar-collapse-1', 'menu_class' => 'nav navbar-nav navbar-right') ); ?>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <?php wp_nav_menu( array( 'menu' => 'Main Menu', 'theme_location' => 'primary', 'menu_class' => 'nav navbar-nav navbar-right') ); ?>
+            </div>
         </div>
     </div>
     <!-- /.container-fluid -->
