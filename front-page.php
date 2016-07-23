@@ -5,7 +5,7 @@
     <!-- Marketing messaging and featurettes
     ================================================== -->
 
-    <div class="container mainpage">
+    <div class="container">
     <div class="row maincontent" style="text-align:center"><h3>Title of Section</h3></div>
       <!-- Three columns of text below the carousel -->
       <div class="row maincontent">

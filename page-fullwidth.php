@@ -1,13 +1,12 @@
 <?php 
 /**
- * Template name: Full width page, no sidebar
+ * Template name: Full-width
  *
  *
  */
 get_header(); ?>
-<div class="container container-normal">
-<div class="row maincontent"><div class="col-sm-12"><?php the_breadcrumb(); ?></div></div>
-      <div class="row maincontent">
+<div class="container">
+      <div class="row">
         <div class="col-sm-12">
             <?php if(have_posts()) : ?><?php while(have_posts()) : the_post(); ?>
              

@@ -5,8 +5,8 @@
  */
 
 get_header(); ?>
-<div class="container container-normal">
-      <div class="row maincontent lower">
+<div class="container">
+      <div class="row">
         <div class="col-sm-8">
         <h2 class="page-title">Search Results: <span><?php  echo get_search_query(); ?></span></h2>
         <?php if(have_posts()) : ?>
@@ -14,15 +14,10 @@ get_header(); ?>
         <?php while(have_posts()) : the_post(); ?>
          
         <div class="post">
-        <a href="<?php the_permalink();?>"><?php the_title(); ?></a>
- 
- 
-            <div class="entry">
+          <a href="<?php the_permalink();?>"><?php the_title(); ?></a>
+          <div class="entry">
             <?php the_excerpt(); ?>
-
- 
-            </div>
- 
+          </div>
         </div>
          
 <?php endwhile; ?>
