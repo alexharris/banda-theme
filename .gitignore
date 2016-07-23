@@ -6,9 +6,10 @@
 !.gitignore
 !wp-config.php
 !/wp-content/
-!/wp-content/themes/
-!/wp-content/themes/*
-!/wp-content/themes/*/*
-!/wp-content/themes/*/*/*
-!/wp-content/themes/*/*/*/*
-!/wp-content/themes/*/*/*/*/*
+!/wp-content/*
+!/wp-content/*/*
+!/wp-content/*/*/*
+!/wp-content/*/*/*/*
+!/wp-content/*/*/*/*/*
+!/wp-content/*/*/*/*/*/*
+!/wp-content/*/*/*/*/*/*/*
