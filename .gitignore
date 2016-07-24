@@ -4,7 +4,6 @@
 
 # But not these files...
 !.gitignore
-!wp-config.php
 !/wp-content/
 !/wp-content/*
 !/wp-content/*/*
