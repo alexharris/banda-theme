@@ -210,6 +210,18 @@ add_action( 'admin_menu', 'remove_menus' );
 // Add support for WordPress 3.0's custom menus
 // Custom Post Types
 // Custom Taxonomies
+
+function section_init() {
+	// create section taxonomy
+    $args = array(
+        'show_admin_column' => true,
+        'label' => __( 'Section' ),
+        // 'rewrite' => array( 'slug' => 'section' ),
+    );
+	register_taxonomy('section','entries',$args
+	);
+}
+add_action( 'init', 'section_init' );
 // Breadcrumbs
 // Page navigation
 // Custom Thumbnails

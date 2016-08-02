@@ -15,21 +15,28 @@
     	<div id="banda-sidebar">
     		<ul class="list-unstyled banda-nav nav">
                 <?php
-                    $categories = get_categories( array(
-                        'orderby' => 'name',
-                        'parent'  => 0,
-                    ) );
-                    foreach ( $categories as $category ) {?>
-                            <li class="banda-nav-section-title"><?php print $category->name; ?></li>
+                    $sections = get_terms('section');
+
+                    foreach ( $sections as $section ) {?>
+                            <li class="banda-nav-section-title"><?php print $section->name; ?></li>
                 			<li>
                 				<ul class="list-unstyled banda-nav-section active">
                                     <?php
+                                    // $slug = $section->slug;
+                                    //                     var_dump($slug);
                                         $args = array(
                                           'post_type' => 'entries',
                                           'order' => 'ASC',
-                                          'cat' => $category->slug,
+                                          'tax_query' => array(
+                                                array(
+                                                    'taxonomy' => 'section',
+                                                    'field'    => 'slug',
+                                                    'terms'    => $section->slug
+                                                ),
+                                      	  ),
                                         );
                                         $entries = new WP_Query( $args );
+
                                         if ($entries->have_posts()) : while ($entries->have_posts()) : $entries->the_post();
                                     ?>
                                         <li><a href="#<?php print $post->post_name; ?>"><?php the_title(); ?></a></li>

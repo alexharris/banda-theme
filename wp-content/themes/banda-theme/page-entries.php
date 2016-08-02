@@ -14,7 +14,6 @@ get_header(); ?>
             <?php get_sidebar('entries'); ?>
         </div>
         <div class="col-sm-8">
-            <div class="row">
                 <?php if(have_posts()) : ?>
                     <?php while(have_posts()) : the_post(); ?>
                         <div class="post">
@@ -43,7 +42,6 @@ get_header(); ?>
                         </div>
                     <?php endwhile; ?>
                 <?php endif; ?>
-            </div>
         </div>
     </div>
 </div>
