@@ -18,27 +18,44 @@ get_header(); ?>
                     <?php while(have_posts()) : the_post(); ?>
                         <div class="post">
                             <h1 class="page-title"><?php the_title(); ?></h1>
-                            <div class="entry">
-                                <?php
-                                    $args = array(
-                                      'post_type' => 'entries',
-                                      'order' => 'ASC'
-                                    );
-                                    $entries = new WP_Query( $args );
-                                    if( $entries->have_posts() ) {
-                                      while( $entries->have_posts() ) {
-                                          $entries->the_post();
-                                        ?>
-                                        <div id="<?php print $post->post_name; ?>"></div>
-                                        <h3><?php the_title(); ?></h3>
+                            <?php
+                                $sections = get_terms('section');
 
-                                        <?php the_content(); ?>
-                                        <hr />
-                                          <?php
-                                      }
-                                    }
-                                  ?>
-                            </div>
+                                foreach ( $sections as $section ) {?>
+                                <h2 class="entry-section-title"><?php print $section->name; ?></h2>
+
+
+                                    <?php
+                                        $args = array(
+                                          'post_type' => 'entries',
+                                          'order' => 'ASC',
+                                          'tax_query' => array(
+                                                array(
+                                                    'taxonomy' => 'section',
+                                                    'field'    => 'slug',
+                                                    'terms'    => $section->slug
+                                                ),
+                                            ),
+                                        );
+                                        $entries = new WP_Query( $args );
+                                        if( $entries->have_posts() ) {
+                                          while( $entries->have_posts() ) {
+                                              $entries->the_post();
+                                            ?>
+                                            <div class="entry">
+                                            <div id="<?php print $post->post_name; ?>"></div>
+                                            <h3><?php the_title(); ?></h3>
+
+                                            <?php the_content(); ?>
+                                            </div>
+                                            <hr />
+                                              <?php
+                                          }
+                                        }
+                                      ?>
+
+                                <?php }
+                            ?>
                         </div>
                     <?php endwhile; ?>
                 <?php endif; ?>

@@ -21,7 +21,7 @@
 
  // Core CSS
  @import "bootstrap/scaffolding";
- @import "bootstrap/type"; 
+ @import "bootstrap/type";
  @import "bootstrap/code";
  @import "bootstrap/grid";
  @import "bootstrap/tables";
@@ -67,8 +67,18 @@ html {
   font-size: 16px;
 }
 
+body {
+    position: relative; // This is for bootstrap scrollspy
+}
+
 section {
     padding-top: 50px;
+}
+
+.entry-section-title {
+    background-color: lighten($grey, 5%);
+    padding: .6em .4em;
+    border-top: 2px solid $primary;
 }
 
 .navbar {
@@ -102,6 +112,14 @@ section {
                         background-color: lighten($grey, 5%);
                         text-decoration: none;
                     };
+                }
+                &.active {
+                    a {
+                        border-left: 2px solid $secondary;
+                        background-color: lighten($grey, 5%);
+                        text-decoration: none;
+                    }
+
                 }
             }
         }
