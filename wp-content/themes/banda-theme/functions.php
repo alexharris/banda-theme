@@ -185,12 +185,21 @@ function entries_post_type() {
 add_action( 'init', 'entries_post_type', 0 );
 
 //
+// Add custom metaboxes
+//
+
+// custom metaboxes here
+
+//
 // Remove certain metaboxes from entries
 //
 
 function remove_page_excerpt_field() {
 	remove_meta_box( 'postexcerpt' , 'entries' , 'normal' );
     remove_meta_box( 'trackbacksdiv' , 'entries' , 'normal' );
+    remove_meta_box( 'trackbacksdiv' , 'entries' , 'side' );
+    remove_meta_box( 'tagsdiv-post_tag' , 'entries' , 'side' );
+    remove_meta_box( 'categorydiv' , 'entries' , 'side' );
 }
 add_action( 'admin_menu' , 'remove_page_excerpt_field' );
 
