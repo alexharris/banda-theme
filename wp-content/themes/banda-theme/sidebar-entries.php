@@ -11,7 +11,7 @@
 ?>
 
     <div id="secondary" class="widget-area" role="complementary">
-      <div class="col-xs-12" class="banda-sidebar-container" data-spy="affix" data-offset-top="60" data-offset-bottom="200" data-clampedwidth=".widget-area">
+      <div class="col-xs-12 banda-sidebar-container"  data-clampedwidth=".widget-area">
     	<div id="banda-sidebar">
     		<ul class="list-unstyled banda-nav nav">
                 <?php

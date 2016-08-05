@@ -9,7 +9,6 @@ $(document).ready(function () {
 */
 $('[data-clampedwidth]').each(function () {
     var elem = $(this);
-    console.log('hello');
     console.log(elem);
     var parentPanel = elem.data('clampedwidth');
     var resizeFn = function () {
