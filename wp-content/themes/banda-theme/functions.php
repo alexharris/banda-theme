@@ -3,9 +3,9 @@
 function my_assets() {
   wp_enqueue_style( 'theme-style', get_stylesheet_uri() );
   wp_enqueue_script( 'bootstrap-js', '//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js', array( 'jquery' ), null, true );
-  wp_enqueue_script( 'template-js', get_stylesheet_directory_uri() . '/js/main.min.js', array( 'jquery' ), null, true );
+  wp_enqueue_script( 'template-js', get_stylesheet_directory_uri() . '/js/main.js', array( 'jquery' ), null, true );
 }
-add_action( 'wp_enqueue_scripts', 'my_assets' ); 
+add_action( 'wp_enqueue_scripts', 'my_assets' );
 
 //Add jQuery
 if (!is_admin()) add_action("wp_enqueue_scripts", "my_jquery_enqueue", 11);
@@ -36,7 +36,7 @@ function wpbootstrap_widgets_init() {
     'after_widget' => '</aside>',
     'before_title' => '<h3 class="widget-title">',
     'after_title' => '</h3>',
-  ) );  
+  ) );
   register_sidebar( array(
     'name' => __( 'Front Page Widget Area Left', 'custom_template' ),
     'id' => 'front-1',
@@ -45,7 +45,7 @@ function wpbootstrap_widgets_init() {
     'after_widget' => '</aside>',
     'before_title' => '<h3 class="widget-title">',
     'after_title' => '</h3>',
-  ) );  
+  ) );
   register_sidebar( array(
     'name' => __( 'Front Page Widget Area Left', 'custom_template' ),
     'id' => 'front-2',
@@ -54,7 +54,7 @@ function wpbootstrap_widgets_init() {
     'after_widget' => '</aside>',
     'before_title' => '<h3 class="widget-title">',
     'after_title' => '</h3>',
-  ) );  
+  ) );
   register_sidebar( array(
     'name' => __( 'Front Page Widget Area Left', 'custom_template' ),
     'id' => 'front-3',
@@ -63,7 +63,16 @@ function wpbootstrap_widgets_init() {
     'after_widget' => '</aside>',
     'before_title' => '<h3 class="widget-title">',
     'after_title' => '</h3>',
-  ) );  
+  ) );
+  // register_sidebar( array(
+  //   'name' => __( 'Entries Sidebar', 'custom_template' ),
+  //   'id' => 'entries-sidebar',
+  //   'description' => __( 'Appears on entries page' ),
+  //   'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+  //   'after_widget' => '</aside>',
+  //   'before_title' => '<h3 class="widget-title">',
+  //   'after_title' => '</h3>',
+  // ) );
 }
 add_action( 'widgets_init', 'wpbootstrap_widgets_init' );
 
@@ -109,7 +118,7 @@ function remove_menu_pages() {
 // Remove default linking of images when using Add Media
 function wpb_imagelink_setup() {
   $image_set = get_option( 'image_default_link_type' );
-  
+
   if ($image_set !== 'none') {
     update_option('image_default_link_type', 'none');
   }
@@ -165,7 +174,7 @@ function entries_post_type() {
     'show_in_admin_bar'     => true,
     'show_in_nav_menus'     => true,
     'can_export'            => true,
-    'has_archive'           => true,    
+    'has_archive'           => true,
     'exclude_from_search'   => false,
     'publicly_queryable'    => true,
     'capability_type'       => 'page',
@@ -175,13 +184,33 @@ function entries_post_type() {
 }
 add_action( 'init', 'entries_post_type', 0 );
 
+//
+// Add custom metaboxes
+//
+
+// custom metaboxes here
+
+//
+// Remove certain metaboxes from entries
+//
+
+function remove_page_excerpt_field() {
+	remove_meta_box( 'postexcerpt' , 'entries' , 'normal' );
+    remove_meta_box( 'trackbacksdiv' , 'entries' , 'normal' );
+    remove_meta_box( 'trackbacksdiv' , 'entries' , 'side' );
+    remove_meta_box( 'tagsdiv-post_tag' , 'entries' , 'side' );
+    remove_meta_box( 'categorydiv' , 'entries' , 'side' );
+}
+add_action( 'admin_menu' , 'remove_page_excerpt_field' );
+
+
 
 //
 // Remove posts and comments from admin area
 //
 function remove_menus(){
   remove_menu_page( 'edit.php' );                   //Posts
-  remove_menu_page( 'edit-comments.php' );          //Comments  
+  remove_menu_page( 'edit-comments.php' );          //Comments
 }
 add_action( 'admin_menu', 'remove_menus' );
 
@@ -190,8 +219,47 @@ add_action( 'admin_menu', 'remove_menus' );
 // Add support for WordPress 3.0's custom menus
 // Custom Post Types
 // Custom Taxonomies
+
+function section_init() {
+	// create section taxonomy
+    $args = array(
+        'show_admin_column' => true,
+        'label' => __( 'Section' ),
+        // 'rewrite' => array( 'slug' => 'section' ),
+    );
+	register_taxonomy('section','entries',$args
+	);
+}
+add_action( 'init', 'section_init' );
 // Breadcrumbs
-// Page navigation 
+// Page navigation
 // Custom Thumbnails
 // Enable post thumbnails
+
+// Add Custom Classes to Main Navbar menu
+function add_classes_on_li($classes, $item, $args) {
+  $classes[] = 'nav-item';
+  return $classes;
+}
+add_filter('nav_menu_css_class','add_classes_on_li',1,3);
+
+function add_specific_menu_location_atts( $atts, $item, $args ) {
+    // check if the item is in the primary menu
+    if( $args->theme_location == 'primary' ) {
+      // add the desired attributes:
+      $atts['class'] = 'nav-link';
+    }
+    return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'add_specific_menu_location_atts', 10, 3 );
+
+
+function special_nav_class($classes, $item){
+     if( in_array('current-menu-item', $classes) ){
+             $classes[] = 'active ';
+     }
+     return $classes;
+}
+
+add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
 ?>

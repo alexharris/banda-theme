@@ -20,30 +20,18 @@
       wp_head();
   ?>
 </head>
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> data-spy="scroll" data-target="#banda-sidebar">
+    <nav class="navbar navbar-light bg-primary">
+    	<button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation">
+          &#9776;
+        </button>
+    	<div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+            <?php if ( get_theme_mod( 'themeslug_logo' ) ) : //Activate the IF, if you prefer to have either the logo or the site name, but not both?>
+                <a class="navbar-brand" href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><img src='<?php echo esc_url( get_theme_mod( 'themeslug_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'></a>
+            <?php else : ?>
+                <a class="navbar-brand" href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><?php bloginfo( 'name' ); ?></a>
+            <?php endif; ?>
+            <?php wp_nav_menu( array( 'menu' => 'Main Menu', 'theme_location' => 'primary', 'menu_class' => 'nav navbar-nav', 'container' => false) ); ?>
 
-<nav class="navbar navbar-default">
-    <div class="container">
-        <div class="col-sm-12">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <?php if ( get_theme_mod( 'themeslug_logo' ) ) : //Activate the IF, if you prefer to have either the logo or the site name, but not both?>
-                    <a class="navbar-brand" href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><img src='<?php echo esc_url( get_theme_mod( 'themeslug_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>'></a>
-                <?php else : ?>
-                    <a class="navbar-brand" href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><?php bloginfo( 'name' ); ?></a>
-                <?php endif; ?>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <?php wp_nav_menu( array( 'menu' => 'Main Menu', 'theme_location' => 'primary', 'menu_class' => 'nav navbar-nav navbar-right') ); ?>
-            </div>
-        </div>
-    </div>
-    <!-- /.container-fluid -->
-</nav>
-<!-- /site navigation -->
+    	</div>
+    </nav>
