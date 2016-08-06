@@ -19,7 +19,7 @@
       <!-- Three columns of text below the carousel -->
       <div class="row maincontent">
           <div class="col-sm-12">
-            <h2>Testing this</h2>
+            <h2 class="display-3">Testing this</h2>
           </div>
         <div class="col-sm-4">
           <?php if ( is_active_sidebar( 'front-1' ) ) : ?>
@@ -39,21 +39,21 @@
           <?php if ( is_active_sidebar( 'front-2' ) ) : ?>
               <?php dynamic_sidebar( 'front-2' ); ?>
           <?php else : ?>
-        <div class="card">
-        	<img class="card-img-top img-fluid" src="https://placebear.com/600/300" alt="Card image cap">
-        	<div class="card-block">
-        		<h4 class="card-title">Card title</h4>
-        		<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        		<a href="#" class="btn btn-primary">Go somewhere</a>
-        	</div>
-        </div>
+              <div class="card">
+                  <img class="card-img-top img-fluid" src="https://placebear.com/600/300" alt="Card image cap">
+                <div class="card-block">
+                  <h4 class="card-title">Special title treatment</h4>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
           <?php endif; ?>
         </div><!-- /.col-sm-4 -->
         <div class="col-sm-4">
           <?php if ( is_active_sidebar( 'front-3' ) ) : ?>
               <?php dynamic_sidebar( 'front-3' ); ?>
           <?php else : ?>
-        <div class="card">
+        <div class="card card-outline-primary">
         	<img class="card-img-top img-fluid" src="https://placebear.com/400/300" alt="Card image cap">
         	<div class="card-block">
         		<h4 class="card-title">Card title</h4>
@@ -66,7 +66,7 @@
       </div><!-- /.row -->
       <div class="row maincontent">
           <div class="col-sm-12">
-            <h2>Testing this</h2>
+            <h2 class="display-4">Also esting this</h2>
             <p>You know, I don't want to spoil the party but, does anyone notice that we're stuck in the middle of the ocean on this couch? Do you know what kind of sunburn I'm going to get? None, 'cause I'm covered in latex, but you guys are going to get seriously fried. I mean it's not like a... like a big gigantic ship is just going to come out of nowhere and save US by gosh.</p>
           </div>
           <div class="col-sm-12">
