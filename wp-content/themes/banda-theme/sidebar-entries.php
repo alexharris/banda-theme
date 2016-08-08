@@ -11,8 +11,8 @@
 ?>
 
     <div id="secondary" class="widget-area" role="complementary">
-      <div class="col-xs-12 banda-sidebar-container"  data-clampedwidth=".widget-area">
-    	<div id="banda-sidebar">
+      <div class="col-xs-12 banda-sidebar-container" >
+    	<div id="banda-sidebar" data-clampedwidth=".widget-area">
     		<ul class="list-unstyled banda-nav nav">
                 <?php
                     $sections = get_terms('section');

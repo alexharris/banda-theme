@@ -53,7 +53,7 @@
           <?php if ( is_active_sidebar( 'front-3' ) ) : ?>
               <?php dynamic_sidebar( 'front-3' ); ?>
           <?php else : ?>
-        <div class="card card-outline-primary">
+        <div class="card">
         	<img class="card-img-top img-fluid" src="https://placebear.com/400/300" alt="Card image cap">
         	<div class="card-block">
         		<h4 class="card-title">Card title</h4>

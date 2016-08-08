@@ -20,8 +20,8 @@
       wp_head();
   ?>
 </head>
-<body <?php body_class(); ?> data-spy="scroll" data-target="#banda-sidebar">
-    <nav class="navbar navbar-light bg-primary">
+<body <?php body_class(); ?>>
+    <nav class="navbar navbar-light bg-primary m-b-3">
     	<button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation">
           &#9776;
         </button>

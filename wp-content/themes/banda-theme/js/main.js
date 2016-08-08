@@ -13,6 +13,7 @@ $('[data-clampedwidth]').each(function () {
     var parentPanel = elem.data('clampedwidth');
     var resizeFn = function () {
         var sideBarNavWidth = $(parentPanel).width() - parseInt(elem.css('paddingLeft')) - parseInt(elem.css('paddingRight')) - parseInt(elem.css('marginLeft')) - parseInt(elem.css('marginRight')) - parseInt(elem.css('borderLeftWidth')) - parseInt(elem.css('borderRightWidth'));
+        sideBarNavWidth = sideBarNavWidth - 20;
         elem.css('width', sideBarNavWidth);
     };
 

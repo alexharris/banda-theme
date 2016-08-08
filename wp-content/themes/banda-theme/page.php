@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * The template for displaying all pages
  *
@@ -10,7 +10,6 @@
  */
 
 get_header(); ?>
-
 <div class="container">
     <div class="row">
         <div class="col-sm-3">
