@@ -1,9 +1,10 @@
 footer {
     background-color: $grey;
-    .footer-logo {
-        height: 30px;
+    .footer-logo  {
+        height: 40px;
     }
     a {
         color: $brand-secondary;
+        border-bottom: 2px solid $brand-secondary;
     }
 }
