@@ -1,20 +1,4 @@
 # Ignore everything
-/*
-/*/
 .DS_Store
 # But not these files...
 !.gitignore
-!/wp-content/
-!/wp-content/*
-!/wp-content/*/*
-!/wp-content/*/*/*
-!/wp-content/*/*/*/*
-!/wp-content/*/*/*/*/*
-!/wp-content/*/*/*/*/*/*
-!/wp-content/*/*/*/*/*/*/*
-/wp-content/plugins/akismet/*
-/wp-content/plugins/hello.php
-/wp-content/wp-gulp/*
-/wp-content/themes/twentysixteen/*
-/wp-content/themes/twentyfifteen/*
-/wp-content/themes/twentyfourteen/*
