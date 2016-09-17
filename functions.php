@@ -22,9 +22,15 @@ function my_login_logo_url() {
 add_filter( 'login_headerurl', 'my_login_logo_url' );
 
 // Register area for custom menu
-function register_my_menu() {
-    register_nav_menu( 'primary-menu', __( 'Primary Menu' ) );
+function register_my_menus() {
+  register_nav_menus(
+    array(
+      'main-menu' => __( 'Main Menu' ),
+      'footer-menu' => __( 'Footer Menu' )
+    )
+  );
 }
+add_action( 'init', 'register_my_menus' );
 
 //Register Sidebars
 function wpbootstrap_widgets_init() {
