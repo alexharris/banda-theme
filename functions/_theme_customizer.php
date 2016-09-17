@@ -25,6 +25,7 @@ function themeslug_theme_customizer( $wp_customize ) {
             'default'     => '#000000',
             'transport'   => 'postMessage'
         )
+
     );
     $wp_customize->add_control(
         new WP_Customize_Color_Control(
@@ -38,7 +39,24 @@ function themeslug_theme_customizer( $wp_customize ) {
         )
     );
     //header color
-    
+    $wp_customize->add_setting(
+        'banda_primary_color',
+        array(
+            'default'     => '#000000',
+            'transport'   => 'postMessage'
+        ) 
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'primary_color',
+            array(
+                'label'      => __( 'Primary Color', 'banda' ),
+                'section'    => 'colors',
+                'settings'   => 'banda_primary_color'
+            )
+        )
+    );
 }
 add_action('customize_register', 'themeslug_theme_customizer');
 
