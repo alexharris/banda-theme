@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 # Ignore everything
 .DS_Store
 
 # But not these files...
 !.gitignore
-=======
-.DS_Store
-
->>>>>>> entries

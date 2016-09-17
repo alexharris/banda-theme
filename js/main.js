@@ -20,4 +20,7 @@ $('[data-clampedwidth]').each(function () {
     $(window).resize(resizeFn);
 });
 
+// Load highlight-js
+hljs.initHighlightingOnLoad();
+
 });
