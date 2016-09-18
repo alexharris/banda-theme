@@ -46,14 +46,6 @@ function wpb_imagelink_setup() {
 }
 add_action('admin_init', 'wpb_imagelink_setup', 10);
 
-//
-// Remove posts and comments from admin area
-//
-function remove_menus(){
-  remove_menu_page( 'edit.php' );                   //Posts
-  remove_menu_page( 'edit-comments.php' );          //Comments
-}
-add_action( 'admin_menu', 'remove_menus' );
 
 function remove_page_excerpt_field() {
   remove_meta_box( 'postexcerpt' , 'entries' , 'normal' );
