@@ -39,11 +39,6 @@
             <?php wp_nav_menu( array( 'menu' => 'Main Menu', 'theme_location' => 'primary', 'menu_class' => 'nav navbar-nav', 'container' => false) ); ?>
 
     	</div><!-- #exCollapsingNavbar2 -->
-
-
-    <div id="content">
-    This is the content. <a href="#">This is an anchor</a> so that we can tell the Theme Customizer is working.
-</div><!-- /#content -->
   
     </div><!-- /.container -->
 
