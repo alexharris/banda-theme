@@ -14,8 +14,10 @@
       <div class="col-xs-12 banda-sidebar-container"  data-clampedwidth=".widget-area">
     	<div id="banda-sidebar">
     		<ul class="list-unstyled banda-nav nav">
+                
                 <?php
                     $sections = get_terms('section');
+
 
                     foreach ( $sections as $section ) {?>
                             <li class="banda-nav-section-title"><?php print $section->name; ?></li>
