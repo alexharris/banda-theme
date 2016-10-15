@@ -32,7 +32,9 @@ add_filter('tiny_mce_before_init', 'myformatTinyMCE' );
 // Remove Comments from Admin Menu
 //
 function remove_menu_pages() {
-    remove_menu_page('edit-comments.php');
+    remove_menu_page('edit-comments.php');          //Comments
+  remove_menu_page( 'edit.php' );                   //Posts
+
 }
 add_action( 'admin_menu', 'remove_menu_pages' );
 
