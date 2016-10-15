@@ -23,7 +23,12 @@ get_header(); ?>
                         <div class="post">
                             <!-- section anchor link  -->
                              <div id="<?php print $post->post_name; ?>"></div>
+
+                             <!-- home page title -->
                             <h2 class="page-title"><?php the_title(); ?></h2>
+                            <div class="featured-text">
+                              <?php the_content(); ?>
+                            </div>
 
                             <?php
                                 $sections = get_terms('section');

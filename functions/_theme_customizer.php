@@ -63,7 +63,7 @@ function themeslug_theme_customizer( $wp_customize ) {
     $wp_customize->add_setting(
         'banda_primary_color',
         array(
-            'default'     => '#93eec1',
+            'default'     => '#189251',
             'transport'   => 'postMessage'
         ) 
 
@@ -160,7 +160,7 @@ function banda_customizer_css() {
         .maincontent a:hover {
             color: <?php echo get_theme_mod( 'banda_link_hover_color' ); ?>;  
         }
-        .bg-primary {
+        .bg-primary, .l-footer {
             background-color:  <?php echo get_theme_mod( 'banda_primary_color' ); ?>;
         }
         .navbar-light .navbar-brand {
@@ -182,6 +182,9 @@ function banda_customizer_css() {
         }
         ::-moz-selection {
             background: rgba(<?php echo $rgb; ?>, .3); /* Gecko Browsers */
+        }
+        .card {
+             border-left: 2px solid <?php echo get_theme_mod( 'banda_primary_color' ); ?>;
         }
         
     </style>
