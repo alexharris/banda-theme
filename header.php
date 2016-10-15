@@ -42,7 +42,7 @@
             <?php else : ?>
                 <a class="navbar-brand" href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'><?php bloginfo( 'name' ); ?></a>
             <?php endif; ?>
-            <?php wp_nav_menu( array( 'menu' => 'Main Menu', 'theme_location' => 'primary', 'menu_class' => 'nav navbar-nav', 'container' => false) ); ?>
+            <?php //wp_nav_menu( array( 'menu' => 'Main Menu', 'theme_location' => 'primary', 'menu_class' => 'nav navbar-nav', 'container' => false) ); ?>
 
 
     	</div><!-- #exCollapsingNavbar2 -->
