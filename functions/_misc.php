@@ -3,6 +3,8 @@
 // Add thumbnails
 //
 add_theme_support( 'post-thumbnails' );
+set_post_thumbnail_size( 150, 150, true ); // default Post Thumbnail dimensions (cropped)
+
 
 //
 // Change logo link on login page
