@@ -147,6 +147,11 @@ add_action('customize_register', 'themeslug_theme_customizer');
 // allow css to be updates in theme options admin area
 //
 function banda_customizer_css() {
+    
+    //convert primary color hex to rgb 
+    $hex =  get_theme_mod( 'banda_primary_color' );
+    list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
+    $rgb = ($r . ', ' . $g . ', ' . $b)
     ?>
     <style type="text/css">
         .maincontent a { 
@@ -171,6 +176,12 @@ function banda_customizer_css() {
         }
         body, p, li, h2,h3,h4,h5,h6,blockquote {
             color:  <?php echo get_theme_mod( 'banda_secondary_text_color' ); ?> ;
+        }
+        ::selection {
+            background: rgba(<?php echo $rgb; ?>, .3);  /* WebKit/Blink Browsers */
+        }
+        ::-moz-selection {
+            background: rgba(<?php echo $rgb; ?>, .3); /* Gecko Browsers */
         }
         
     </style>

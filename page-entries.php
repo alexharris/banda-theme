@@ -21,14 +21,19 @@ get_header(); ?>
                 <?php if(have_posts()) : ?>
                     <?php while(have_posts()) : the_post(); ?>
                         <div class="post">
-                            <!-- section anchor link -->
+                            <!-- section anchor link  -->
                              <div id="<?php print $post->post_name; ?>"></div>
                             <h2 class="page-title"><?php the_title(); ?></h2>
+
                             <?php
                                 $sections = get_terms('section');
 
                                 foreach ( $sections as $section ) { ?>
+                                <!-- section title -->
                                 <h3 class="entry-section-title"><?php print $section->name; ?></h3>
+                                <p class="featured-text">
+                                    <?php echo $section->description; ?>
+                                </p>
 
 
                                     <?php
