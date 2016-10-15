@@ -39,42 +39,60 @@ $(function() {
   });
 });
 
-// fixed position sidebar after scrolling down a bit 
-var sidebarHeight = $('.banda-sidebar-container').outerHeight(),
-    footerHeight  = $('.l-footer').outerHeight(),
-    headerHeight  = $('.navbar').outerHeight();
+// ajax search
+jQuery('.search-field').keypress(function(event) {
 
-$(window).scroll(function() {    
-var   body           = document.body,
-      html           = document.documentElement,
-      windowHeight   = $(window).height(),
-      documentHeight = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight ),
-      scroll         = $(window).scrollTop(),
-      position       = $(".banda-sidebar-container").offset();
+  jQuery(this).attr('autocomplete','off');  // prevent browser autocomplete
 
-    if (scroll >= headerHeight) {  // apply fixed to sidebar when scolled past header
-        $('.banda-sidebar-container').addClass('is-fixed');
-    } else {
-        $('.banda-sidebar-container').removeClass('is-fixed');
+  var searchTerm = jQuery(this).val(); // get search term
+   
+  if(searchTerm.length > 2){ // send request when the lenght is gt 2 letters
+  
+    jQuery.ajax({
+
+      url : BASE+'/wp-admin/admin-ajax.php',
+      type:"POST",
+      data:{
+        'action':'ajax_search',
+        'term' :searchTerm
+      },
+      success:function(result){
+        jQuery('.ajax-search').slideUp().html(result);
+      }
+
+    });
+  } //end if searchTerm
+
+}); //end keypress
+
+
+//slide down search bar
+$('.search-icon' ).click(function () {
+ if ( $( "#search-bar" ).is( ":hidden" ) ) {
+    $( "#search-bar" ).slideDown( "fast" );
+    $( "#search-bar input" ).focus( );
+
+  } else {
+    $( "#search-bar" ).hide();
+  }
+});
+
+
+// slide up search bar
+$(document).mouseup(function (e)
+{
+    var container = $("#search-bar");
+
+    if (!container.is(e.target) // if the target of the click isn't the container...
+        && container.has(e.target).length === 0) // ... nor a descendant of the container
+    {
+        container.slideUp('fast');
     }
 
-    // if at bottom of page, and not mobile screen, change sidebar position to absolute to make sure it doesn't overlap footer 
-    if ((windowHeight <= (footerHeight + sidebarHeight)) && ($(window).width() >= 544) ) { 
-       if (scroll >= (documentHeight - (sidebarHeight + footerHeight + headerHeight ))) { //pos absolute for sidebar 
-          $('.banda-sidebar-container').css({
-              'top': ((documentHeight - (sidebarHeight + footerHeight + headerHeight + 60))+'px'), 
-              'position': 'absolute',
-              'max-height': 'initial',
-            });
-        } else { // back to fixed sidebar
-          $('.banda-sidebar-container').css({
-            'top': '', 
-            'position': '',
-            'max-height': '100%',
-          });
-        }
-    }
-}); 
+});
+
+
+
+
 
 });// doc ready
-

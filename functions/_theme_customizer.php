@@ -172,9 +172,7 @@ function banda_customizer_css() {
         body, p, li, h2,h3,h4,h5,h6,blockquote {
             color:  <?php echo get_theme_mod( 'banda_secondary_text_color' ); ?> ;
         }
-        .card, #banda-sidebar ul.banda-nav, .jumbotron, .table{
-            border-left: 2px solid <?php echo get_theme_mod( 'banda_primary_color' ); ?> ;
-        }
+        
     </style>
     <?php
 }

@@ -19,9 +19,15 @@
 
       wp_head();
   ?>
+
 </head>
 <body <?php body_class(); ?> data-spy="scroll" data-target="#banda-sidebar">
-   
+   <div id="search-bar" >
+    <div class="container">
+      <?php get_search_form(); ?>      
+    </div>
+    <!-- /.container -->
+   </div>
     <nav class="navbar navbar-light bg-primary">
     	
       <div class="container">
@@ -38,7 +44,10 @@
             <?php endif; ?>
             <?php wp_nav_menu( array( 'menu' => 'Main Menu', 'theme_location' => 'primary', 'menu_class' => 'nav navbar-nav', 'container' => false) ); ?>
 
+
     	</div><!-- #exCollapsingNavbar2 -->
+
+       <span class="search-icon"></span>
   
     </div><!-- /.container -->
 

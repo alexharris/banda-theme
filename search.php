@@ -7,6 +7,10 @@
 get_header(); ?>
 <div class="container">
       <div class="row">
+        <div class="col-sm-4">
+            <?php get_sidebar('entries'); ?>
+        </div>
+
         <div class="col-sm-8">
         <h2 class="page-title">Search Results: <span><?php  echo get_search_query(); ?></span></h2>
         <?php if(have_posts()) : ?>
@@ -14,10 +18,7 @@ get_header(); ?>
         <?php while(have_posts()) : the_post(); ?>
          
         <div class="post">
-          <a href="<?php the_permalink();?>"><?php the_title(); ?></a>
-          <div class="entry">
-            <?php the_excerpt(); ?>
-          </div>
+          <?php get_template_part('_single_entry'); ?>
         </div>
          
 <?php endwhile; ?>
@@ -45,6 +46,6 @@ get_header(); ?>
 
 
   
-    </div><!-- col-sm-8 -->
-<?php get_sidebar(); ?> 
+  </div><!-- /col-sm-8 -->
+</div> <!-- /conatiner -->
 <?php get_footer(); ?>

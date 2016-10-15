@@ -8,11 +8,6 @@ function my_login_logo_url() {
 add_filter( 'login_headerurl', 'my_login_logo_url' );
 
 //
-// Code for custom background support
-//
-add_custom_background();
-
-//
 //Enable post and comments RSS feed links to head
 //
 add_theme_support( 'automatic-feed-links' );

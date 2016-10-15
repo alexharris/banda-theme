@@ -13,16 +13,22 @@ get_header(); ?>
         <div class="col-sm-4">
             <?php get_sidebar('entries'); ?>
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-8 entries-body">
+             <ul class="ajax-search"></ul>
+          
+
+
                 <?php if(have_posts()) : ?>
                     <?php while(have_posts()) : the_post(); ?>
                         <div class="post">
-                            <h1 class="page-title"><?php the_title(); ?></h1>
+                            <!-- section anchor link -->
+                             <div id="<?php print $post->post_name; ?>"></div>
+                            <h2 class="page-title"><?php the_title(); ?></h2>
                             <?php
                                 $sections = get_terms('section');
 
-                                foreach ( $sections as $section ) {?>
-                                <h2 class="entry-section-title"><?php print $section->name; ?></h2>
+                                foreach ( $sections as $section ) { ?>
+                                <h3 class="entry-section-title"><?php print $section->name; ?></h3>
 
 
                                     <?php
@@ -39,53 +45,19 @@ get_header(); ?>
                                         );
                                         $entries = new WP_Query( $args );
                                         if( $entries->have_posts() ) {
+                                          
                                           while( $entries->have_posts() ) {
-                                              $entries->the_post();
-                                            ?>
-                                            <div class="entry">
-                                            <div id="<?php print $post->post_name; ?>"></div>
-                                            <h3><?php the_title(); ?></h3>
-
-                                            <?php the_content(); ?>
-                                            </div>
+                                              $entries->the_post(); ?>
+                                            <?php get_template_part('_single_entry'); ?>
                                             <?php
-                                              if(count(get_post_custom()) > 2) { ?>
-                                                  <div class="card">
-                                                      <div class="card-header">
-                                                        Custom Fields
-                                                      </div>
-                                                      <div class="card-block">
-
-                                                          <dl class="row">
-                                                              <?php
-                                                                  // get custom fields
-                                                                  $custom_field_keys = get_post_custom();
-                                                                  //go through them
-                                                                  foreach ( $custom_field_keys as $key => $value ) {
-                                                                      //check the first character to make sure these are not wordpress default "_edit" custom fields
-                                                                      $valuet = trim($key);
-                                                                      if ( '_' == $valuet{0} )
-                                                                          continue;
-                                                              ?>
-                                                              <dt class="col-sm-3"><?php echo $key; ?></dt>
-                                                              <dd class="col-sm-9"><?php echo $value[0]; ?></dd>
-                                                              <?php  } ?>
-                                                          </dl>
-                                                    </div>
-                                                  </div>
-                                              </div>
+                                          
+                                          }; //end while entries ?>
+                                          <hr />
                                               <?php
-                                              };
-                                          ?>
-                                            <hr />
-                                              <?php
-                                          }
                                         }
+                                      } //foreach
                                       ?>
-
-                                <?php }
-                            ?>
-                        </div>
+                        </div><!-- /post -->
                     <?php endwhile; ?>
                 <?php endif; ?>
         </div>
