@@ -1,5 +1,10 @@
 <?php 
 //
+// Add thumbnails
+//
+add_theme_support( 'post-thumbnails' );
+
+//
 // Change logo link on login page
 //
 function my_login_logo_url() {
