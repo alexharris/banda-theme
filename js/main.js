@@ -57,7 +57,7 @@ jQuery('.search-field').keypress(function(event) {
         'term' :searchTerm
       },
       success:function(result){
-        jQuery('.ajax-search').slideUp().html(result);
+        jQuery('.ajax-search').fadeIn().html(result);
       }
 
     });

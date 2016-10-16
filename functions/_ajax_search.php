@@ -8,7 +8,7 @@ function ajax_search(){
     // creating a search query
     $args = array(
      
-    'post_type' => 'any',
+    'post_type' => 'entries',
     'post_status' => 'publish',
     'order' => 'DESC',
     'orderby' => 'date',
