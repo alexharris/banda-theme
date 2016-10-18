@@ -18,6 +18,49 @@ function themeslug_theme_customizer( $wp_customize ) {
         'settings' => 'themeslug_logo',
     ) ) );
 
+    
+
+    //primary color
+    $wp_customize->add_setting(
+        'banda_primary_color',
+        array(
+            'default'     => '#189251',
+            'transport'   => 'postMessage'
+        ) 
+
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'primary_color',
+            array(
+                'label'      => __( 'Primary Color', 'banda' ),
+                'section'    => 'colors',
+                'settings'   => 'banda_primary_color'
+            )
+        )
+    );
+    //secondary color
+    $wp_customize->add_setting(
+        'banda_secondary_color',
+        array(
+            'default'     => '#FFF',
+            'transport'   => 'postMessage'
+        ) 
+        
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'secondary_color',
+            array(
+                'label'      => __( 'Secondary Color', 'banda' ),
+                'section'    => 'colors',
+                'settings'   => 'banda_secondary_color'
+            )
+        )
+    );
+
     //link color
     $wp_customize->add_setting(
         'banda_link_color',
@@ -59,86 +102,8 @@ function themeslug_theme_customizer( $wp_customize ) {
         )
     );
 
-    //primary color
-    $wp_customize->add_setting(
-        'banda_primary_color',
-        array(
-            'default'     => '#189251',
-            'transport'   => 'postMessage'
-        ) 
 
-    );
-    $wp_customize->add_control(
-        new WP_Customize_Color_Control(
-            $wp_customize,
-            'primary_color',
-            array(
-                'label'      => __( 'Primary Color', 'banda' ),
-                'section'    => 'colors',
-                'settings'   => 'banda_primary_color'
-            )
-        )
-    );
-    //secondary color
-    // $wp_customize->add_setting(
-    //     'banda_secondary_color',
-    //     array(
-    //         'default'     => '#000000',
-    //         'transport'   => 'postMessage'
-    //     ) 
-        
-    // );
-    // $wp_customize->add_control(
-    //     new WP_Customize_Color_Control(
-    //         $wp_customize,
-    //         'secondary_color',
-    //         array(
-    //             'label'      => __( 'Secondary Color', 'banda' ),
-    //             'section'    => 'colors',
-    //             'settings'   => 'banda_secondary_color'
-    //         )
-    //     )
-    // );
-    //primary text
-    $wp_customize->add_setting(
-        'banda_primary_text_color',
-        array(
-            'default'     => '#000000',
-            'transport'   => 'postMessage'
-        ) 
-        
-    );
-    $wp_customize->add_control(
-        new WP_Customize_Color_Control(
-            $wp_customize,
-            'primary_text_color',
-            array(
-                'label'      => __( 'Primary Text Color', 'banda' ),
-                'section'    => 'colors',
-                'settings'   => 'banda_primary_text_color'
-            )
-        )
-    );
-    //secondary text color
-    $wp_customize->add_setting(
-        'banda_secondary_text_color',
-        array(
-            'default'     => '#000000',
-            'transport'   => 'postMessage'
-        ) 
-        
-    );
-    $wp_customize->add_control(
-        new WP_Customize_Color_Control(
-            $wp_customize,
-            'secondary_text_color',
-            array(
-                'label'      => __( 'Secondary Text Color', 'banda' ),
-                'section'    => 'colors',
-                'settings'   => 'banda_secondary_text_color'
-            )
-        )
-    );
+
 
 }
 add_action('customize_register', 'themeslug_theme_customizer');
@@ -154,28 +119,22 @@ function banda_customizer_css() {
     $rgb = ($r . ', ' . $g . ', ' . $b)
     ?>
     <style type="text/css">
-        .maincontent a { 
+        .maincontent a, .post a { 
             color: <?php echo get_theme_mod( 'banda_link_color' ); ?>; 
         }
-        .maincontent a:hover {
+        .maincontent a:hover, .post a:hover {
             color: <?php echo get_theme_mod( 'banda_link_hover_color' ); ?>;  
         }
         .bg-primary, .l-footer {
             background-color:  <?php echo get_theme_mod( 'banda_primary_color' ); ?>;
         }
-        .navbar-light .navbar-brand {
-            color: <?php echo get_theme_mod( 'banda_primary_text_color' ); ?> ;
-        }
-        .navbar-light .navbar-nav .nav-link {
-            color: <?php echo get_theme_mod( 'banda_primary_text_color' ); ?> ;
-        }
         .btn-primary {
-            color: <?php echo get_theme_mod( 'banda_primary_text_color' ); ?> ;
+            color: <?php echo get_theme_mod( 'banda_secondary_color' ); ?> ;
             background-color:  <?php echo get_theme_mod( 'banda_primary_color' ); ?> ;
             border-color:  <?php echo get_theme_mod( 'banda_primary_color' ); ?> ;
         }
-        body, p, li, h2,h3,h4,h5,h6,blockquote {
-            color:  <?php echo get_theme_mod( 'banda_secondary_text_color' ); ?> ;
+        .navbar-light .navbar-brand, .l-footer li a {
+            color:  <?php echo get_theme_mod( 'banda_secondary_color' ); ?> ;
         }
         ::selection {
             background: rgba(<?php echo $rgb; ?>, .3);  /* WebKit/Blink Browsers */

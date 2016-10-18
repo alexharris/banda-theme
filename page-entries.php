@@ -24,7 +24,13 @@ get_header(); ?>
                         <!-- home page title -->
                         <!--                            <h2 class="page-title">--><?php //the_title(); ?><!--</h2>-->
 
-                        <?php the_content(); ?>
+                 <?php the_content(); ?>
+
+                <?php if(have_posts()) : ?>
+                    <?php while(have_posts()) : the_post(); ?>
+                        <div class="post">
+                           
+
 
 
                         <?php
@@ -35,8 +41,6 @@ get_header(); ?>
                             <h2 class="entry-section-title"><?php print $section->name; ?></h2>
 
                             <?php echo $section->description; ?>
-
-
 
                             <?php
                             $args = array(

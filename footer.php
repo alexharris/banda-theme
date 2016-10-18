@@ -7,7 +7,7 @@
 
       <footer class="row">
         <div class="col-md-12">
-          <?php wp_nav_menu( array( 'menu' => 'footer-menu', 'container_class' => 'footer-menu' ) ); ?>
+          <a href='#top' class='top'></a>
         </div>
       </footer>
 
