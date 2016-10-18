@@ -4,11 +4,13 @@
     wp.customize( 'banda_link_color', function( value ) {
         value.bind( function( to ) {
             $( '.maincontent a' ).css( 'color', to );
+             $( '.post a' ).css( 'color', to );
         } );
     });
     wp.customize( 'banda_link_hover_color', function( value ) {
         value.bind( function( to ) {
-            $( 'a:hover' ).css( 'color', to );
+            $( '.post a:hover' ).css( 'color', to );
+            $( '.maincontent a:hover' ).css( 'color', to );
         } );
     });
     wp.customize( 'banda_secondary_text_color', function( value ) {
@@ -25,11 +27,13 @@
 
         } );
     });
-    wp.customize( 'banda_primary_text_color', function( value ) {
+    wp.customize( 'banda_secondary_color', function( value ) {
         value.bind( function( to ) {
             $( '.navbar-light .navbar-brand' ).css( 'color', to );
             $( '.navbar-light .navbar-nav .nav-link ' ).css( 'color', to );
             $( '.btn-primary' ).css( 'color', to );
+            $( '.navbar-light .navbar-brand' ).css( 'color', to );
+            $( '.l-footer li a' ).css( 'color', to );
         } );
     });
     wp.customize( 'banda_primary_color', function( value ) {
@@ -40,9 +44,11 @@
             $( '.table' ).css( 'border-left-color', to );
             $( '.btn-primary' ).css( 'background-color', to );
             $( '.btn-primary' ).css( 'border-color', to );
+            $( '.l-footer' ).css( 'background-color', to );
             $( '.bg-primary' ).css( 'background-color', to );
+            
 
         } );
     });
- 
+
 })( jQuery );

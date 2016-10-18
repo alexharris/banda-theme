@@ -21,8 +21,7 @@ get_header(); ?>
                 <?php if(have_posts()) : ?>
                     <?php while(have_posts()) : the_post(); ?>
                         <div class="post">
-                            <!-- section anchor link  -->
-                             <div id="<?php print $post->post_name; ?>"></div>
+                           
 
                              <!-- home page title -->
                             <h2 class="page-title"><?php the_title(); ?></h2>
@@ -34,6 +33,9 @@ get_header(); ?>
                                 $sections = get_terms('section');
 
                                 foreach ( $sections as $section ) { ?>
+                                 <!-- section anchor link  -->
+                                <div id="<?php print $section->slug; ?>"></div>
+
                                 <!-- section title -->
                                 <h3 class="entry-section-title"><?php print $section->name; ?></h3>
                                 <p class="featured-text">

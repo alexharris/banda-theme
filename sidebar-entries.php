@@ -20,7 +20,7 @@
 
 
                     foreach ( $sections as $section ) {?>
-                            <li class="banda-nav-section-title"> <a href="#<?php print $post->post_name; ?>"><?php print $section->name; ?></a></li>
+                            <li class="banda-nav-section-title"> <a href="#<?php print $section->slug; ?>"><?php print $section->name; ?></a></li>
                 			<li>
                 				<ul class="list-unstyled banda-nav-section active">
                                     <?php

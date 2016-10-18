@@ -8,7 +8,7 @@ function ajax_search(){
     // creating a search query
     $args = array(
      
-    'post_type' => 'entries',
+    'post_type' => 'post',
     'post_status' => 'publish',
     'order' => 'DESC',
     'orderby' => 'date',
@@ -18,6 +18,7 @@ function ajax_search(){
     );
      
     $query = new WP_Query( $args );
+
      
     // display results
     if($query->have_posts()){
@@ -25,6 +26,7 @@ function ajax_search(){
         while ($query->have_posts()) {
         
             $query->the_post();
+            echo 'eeee';
 
             get_template_part('_single_entry');
             

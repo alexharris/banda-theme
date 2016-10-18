@@ -79,7 +79,7 @@ $('.search-icon' ).click(function () {
 
 
 // slide up search bar
-$(document).mouseup(function (e)
+$(document).mousedown(function (e)
 {
     var container = $("#search-bar");
 
@@ -91,8 +91,19 @@ $(document).mouseup(function (e)
 
 });
 
+//touch click helper
+(function ($) {
+    $.fn.tclick = function (onclick) {
+        this.bind("touchstart", function (e) { onclick.call(this, e); e.stopPropagation(); e.preventDefault(); });
+        this.bind("mousedown", function (e) { onclick.call(this, e); });   //substitute mousedown event for exact same result as touchstart         
+        return this;
+    };
+})(jQuery);
 
-
+//scroll to top 
+$("a[href='#top']").click(function() {
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+});
 
 
 });// doc ready
