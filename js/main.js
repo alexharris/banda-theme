@@ -91,6 +91,10 @@ $(document).mouseup(function (e)
 
 });
 
+    $('.navbar-toggler').click(function(){
+        $('.entries-sidebar').toggleClass('active');
+    });
+
 
 
 

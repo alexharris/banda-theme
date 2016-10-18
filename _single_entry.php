@@ -1,6 +1,6 @@
 <div class="entry">
 <div id="<?php print $post->post_name; ?>"></div>
-<h4><?php the_title(); ?></h4>
+<h3><?php the_title(); ?></h3>
 <?php the_post_thumbnail('large'); ?>
 
 <?php the_content(); ?>
