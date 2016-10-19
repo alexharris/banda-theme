@@ -23,9 +23,9 @@ jQuery('.search-field').keypress(function(event) {
   jQuery(this).attr('autocomplete','off');  // prevent browser autocomplete
 
   var searchTerm = jQuery(this).val(); // get search term
-   
+
   if(searchTerm.length > 2){ // send request when the lenght is gt 2 letters
-  
+
     jQuery.ajax({
 
       url : BASE+'/wp-admin/admin-ajax.php',
@@ -70,24 +70,24 @@ $(document).mousedown(function (e)
 });
 
 
-//flyout nav toggle
-$('.navbar-toggler').click(function(){
-    $('.entries-sidebar').toggleClass('active');
-});
-
 //touch click helper
 (function ($) {
     $.fn.tclick = function (onclick) {
         this.bind("touchstart", function (e) { onclick.call(this, e); e.stopPropagation(); e.preventDefault(); });
-        this.bind("mousedown", function (e) { onclick.call(this, e); });   //substitute mousedown event for exact same result as touchstart         
+        this.bind("mousedown", function (e) { onclick.call(this, e); });   //substitute mousedown event for exact same result as touchstart
         return this;
     };
 })(jQuery);
 
-//scroll to top 
+//scroll to top
 $("a[href='#top']").click(function() {
   $("html, body").animate({ scrollTop: 0 }, "slow");
 });
 
 
 });// doc ready
+
+//flyout nav toggle
+$('.navbar-toggler').click(function(){
+    $('.entries-sidebar').toggleClass('flyout-open');
+});
