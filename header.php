@@ -3,7 +3,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta charset="<?php bloginfo( 'charset' ); ?>" />
-  <title><?php bloginfo('name'); ?> | <?php is_home() ? bloginfo('description') : wp_title(''); ?></title>
+  <title><?php bloginfo('name'); ?>  <?php is_home() ? bloginfo('description') : wp_title(''); ?></title>
 
 
   <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
@@ -18,10 +18,14 @@
       wp_get_archives('type=monthly&format=link');
 
       wp_head();
+      wp_localize_script( 'love', 'postlove', array(
+    'ajax_url' => admin_url( 'admin-ajax.php' )
+  ));
   ?>
 
 </head>
 <body <?php body_class(); ?> data-spy="scroll" data-target="#banda-sidebar">
+<?php include_once("_analytics.php") ?>
    <div id="search-bar" >
     <div class="container">
       <?php get_search_form(); ?>      

@@ -13,7 +13,7 @@ get_header(); ?>
                 <?php get_sidebar('entries'); ?>
             </div>
             <div class="col-sm-8 entries-body">
-                <ul class="ajax-search"></ul>
+                <ul id="ajax-search"></ul>
 
 
 

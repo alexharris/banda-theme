@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function ( $ ) {
 
 
 // smooth scrolling
@@ -18,30 +18,37 @@ $(function() {
 });
 
 // ajax search
+
+ 
 jQuery('.search-field').keypress(function(event) {
+ 
+  // prevent browser autocomplete
+  jQuery(this).attr('autocomplete','off');
+   
+  // get search term
+  var searchTerm = jQuery(this).val();
+   
+  // send request when the lenght is gt 2 letters
+  if(searchTerm.length > 2){
+   var BASE = "<?php echo home_url() ?>";
 
-  jQuery(this).attr('autocomplete','off');  // prevent browser autocomplete
+   
+  jQuery.ajax({
+    url :  'wp-admin/admin-ajax.php',
+    type : 'post',
+    data : {
+      action : 'ajax_search',
+      term : searchTerm
+    },
+    success : function( response ) {
 
-  var searchTerm = jQuery(this).val(); // get search term
 
-  if(searchTerm.length > 2){ // send request when the lenght is gt 2 letters
+                $('#ajax-search').html(response).fadeIn();
 
-    jQuery.ajax({
-
-      url : BASE+'/wp-admin/admin-ajax.php',
-      type:"POST",
-      data:{
-        'action':'ajax_search',
-        'term' :searchTerm
-      },
-      success:function(result){
-        jQuery('.ajax-search').fadeIn().html(result);
-      }
-
-    });
-  } //end if searchTerm
-
-}); //end keypress
+    }
+  });
+  }
+});
 
 
 //slide down search bar
